@@ -1,0 +1,21 @@
+.ms_my-table{
+    border: 1px solid lightgray;
+    border-radius: 0.25rem;
+    .ms_table-head-row{
+        border-bottom: 1px solid lightgray;
+    }
+    .ms_table-row, .ms_table-head-row{
+        display: flex;
+        align-items: center;
+        .ms_table-title, .ms_table-cell{
+            padding: 0.5rem 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .ms_table-title{
+            font-weight: bold;
+        }
+    }
+}
+

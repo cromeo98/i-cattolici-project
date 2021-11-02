@@ -1,5 +1,5 @@
-<div class="card" style="width: 18rem;">
-    <div class="card-header">
+<div class="card">
+    <div class="card-header bg-light">
       Dashboard
     </div>
     <ul class="list-group list-group-flush">
