@@ -17,6 +17,7 @@ class CreateCompetitionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('link');
+            $table->year('year');
             $table->timestamps();
         });
     }

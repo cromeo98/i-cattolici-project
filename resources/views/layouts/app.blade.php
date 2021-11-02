@@ -72,9 +72,19 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <div class="row">
+                @auth
+                    <div class="col-3 py-4">
+                        @yield('dashboard')
+                    </div>
+                @endauth
+    
+                <main role="main" class="col-9 py-4">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
 </body>
 </html>
