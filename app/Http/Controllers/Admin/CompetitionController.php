@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Competition;
 
 class CompetitionController extends Controller
 {
@@ -14,7 +15,9 @@ class CompetitionController extends Controller
      */
     public function index()
     {
-        return view('admin.competition.index');
+        $data = Competition::all();
+        
+        return view('admin.competition.index', compact('data'));
     }
 
     /**
@@ -44,9 +47,9 @@ class CompetitionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Competition $competition)
     {
-        //
+        return view('admin.competition.show', compact('competition'));
     }
 
     /**

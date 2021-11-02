@@ -21,26 +21,33 @@
                 <div class="ms_table-title">Azioni</div>
             </div>
         </div>
-        <div class="ms_table-row">
-            <div class="col-3">
-                <div class="ms_table-cell">UniGames</div>
-            </div>
-            <div class="col-2">
-                <div class="ms_table-cell">2021</div>
-            </div>
-            <div class="col-3">
-                <div class="ms_table-cell">
-                    <a href="https://www.ourwaysports.com/event-details/unigames-1" target="_blank">https://www.ourwaysports.com/event-details/unigames-1</a>
+        @foreach ($data as $item)
+            <div class="ms_table-row">
+                <div class="col-3">
+                    <div class="ms_table-cell">UniGames</div>
                 </div>
-            </div>
-            <div class="col-4">
-                <div class="ms_table-cell">
-                    <button type="button" class="btn btn-primary">Guarda</button>
-                    <button type="button" class="btn btn-warning">Modifica</button>
-                    <button type="button" class="btn btn-danger">Elimina</button>
+                <div class="col-2">
+                    <div class="ms_table-cell">2021</div>
                 </div>
-            </div>
-        </div>
+                <div class="col-3">
+                    <div class="ms_table-cell">
+                        <a href="https://www.ourwaysports.com/event-details/unigames-1" target="_blank">{{$item->link}}</a>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="ms_table-cell">
+
+                        {{-- link to show --}}
+                        <a href="{{route('admin.competition.show', $item->id)}}" class="btn btn-primary">Mostra</a>
+
+                        <button type="button" class="btn btn-warning">Modifica</button>
+                        <button type="button" class="btn btn-danger">Elimina</button>
+                    </div>
+                </div>
+            </div> 
+        @endforeach
+        
     </div>
 
     {{-- <table class="table ms_my-table">
