@@ -24,10 +24,10 @@
         @foreach ($data as $item)
             <div class="ms_table-row">
                 <div class="col-3">
-                    <div class="ms_table-cell">UniGames</div>
+                    <div class="ms_table-cell">{{$item->name}}</div>
                 </div>
                 <div class="col-2">
-                    <div class="ms_table-cell">2021</div>
+                    <div class="ms_table-cell">{{$item->year}}</div>
                 </div>
                 <div class="col-3">
                     <div class="ms_table-cell">
@@ -41,7 +41,8 @@
                         {{-- link to show --}}
                         <a href="{{route('admin.competition.show', $item->id)}}" class="btn btn-primary">Mostra</a>
 
-                        <button type="button" class="btn btn-warning">Modifica</button>
+                        <a href="{{route('admin.competition.edit', $item->id)}}" class="btn btn-warning">Modifica</a>
+                        
                         <button type="button" class="btn btn-danger">Elimina</button>
                     </div>
                 </div>

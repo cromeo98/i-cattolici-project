@@ -58,9 +58,9 @@ class CompetitionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Competition $competition)
     {
-        //
+        return view('admin.competition.edit', compact('competition'));
     }
 
     /**
@@ -70,9 +70,16 @@ class CompetitionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Competition $competition)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'year' => 'required',
+            'link' => 'required'
+        ]);
+
+        $editCompetition = $request->all();
+        
     }
 
     /**
