@@ -27,7 +27,7 @@ class CompetitionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.competition.create');
     }
 
     /**
@@ -38,7 +38,20 @@ class CompetitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'year' => 'required',
+            'link' => 'nullable'
+        ]);
+
+        $newCompetition = $request->all();
+
+        $competition = new Competition();
+        $competition->fill($newCompetition);
+
+        $competition->save();
+
+        return redirect()->route('admin.competition.index');
     }
 
     /**
@@ -75,11 +88,16 @@ class CompetitionController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'year' => 'required',
-            'link' => 'required'
+            'link' => 'nullable'
         ]);
 
         $editCompetition = $request->all();
-        
+
+        // carico le modifiche nel DB
+        $competition->update($editCompetition);
+
+        return redirect()->route('admin.competition.index');
+
     }
 
     /**
@@ -88,8 +106,10 @@ class CompetitionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Competition $competition)
     {
-        //
+        $competition->delete();
+
+        return redirect()->route('admin.competition.index');
     }
 }

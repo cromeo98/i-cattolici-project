@@ -6,6 +6,10 @@
 
 @section('content')
 
+    <div>
+        <a href="{{route('admin.competition.create')}}" class="btn btn-primary mb-1">Aggiungi una competizione</a>
+    </div>
+
     <div class="ms_my-table">
         <div class="ms_table-head-row">
             <div class="col-3">
@@ -31,7 +35,11 @@
                 </div>
                 <div class="col-3">
                     <div class="ms_table-cell">
-                        <a href="https://www.ourwaysports.com/event-details/unigames-1" target="_blank">{{$item->link}}</a>
+                        @if ($item->link)
+                            <a href="{{$item->link}}" target="_blank">{{$item->link}}</a>
+                        @else
+                            <span class="text-muted">Nessun link</span>
+                        @endif
                     </div>
                 </div>
 
@@ -42,43 +50,22 @@
                         <a href="{{route('admin.competition.show', $item->id)}}" class="btn btn-primary">Mostra</a>
 
                         <a href="{{route('admin.competition.edit', $item->id)}}" class="btn btn-warning">Modifica</a>
-                        
-                        <button type="button" class="btn btn-danger">Elimina</button>
+
+                        {{-- delete --}}
+                        <form action="{{route('admin.competition.destroy', $item->id)}}" method="POST" class="d-inline-block text-center">
+                            {{-- Per ogni form bisogna inserire il token altrimenti il cambiamento non viene accettato dal sistema --}}
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            
+                        </form>
+
                     </div>
                 </div>
             </div> 
         @endforeach
         
     </div>
-
-    {{-- <table class="table ms_my-table">
-        <thead class="w-100 table-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody class="bg-white">
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table> --}}
 
 @endsection

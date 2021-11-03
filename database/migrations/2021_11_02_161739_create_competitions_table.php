@@ -16,8 +16,8 @@ class CreateCompetitionsTable extends Migration
         Schema::create('competitions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('link');
             $table->year('year');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -11307,6 +11307,20 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 
+.ms_must-compiled {
+  color: red;
+  font-size: 11px;
+  margin-bottom: 0.5rem;
+}
+
+.ms_a-inherit {
+  color: #212529;
+  text-decoration: none;
+}
+.ms_a-inherit:hover {
+  color: inherit;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

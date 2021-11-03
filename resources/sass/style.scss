@@ -19,6 +19,20 @@
     }
 }
 
+.ms_must-compiled{
+    color: red;
+    font-size: 11px;
+    margin-bottom: 0.5rem;
+}
+
+.ms_a-inherit{
+    color: rgb(33, 37, 41);
+    text-decoration: none;
+    &:hover{
+        color: inherit;
+    }
+}
+
 // remove arrows from input number
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

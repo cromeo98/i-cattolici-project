@@ -16,5 +16,9 @@
               <a href="{{$competition->link}}" class="btn btn-primary">Vai al sito</a>
             </div>
         </div>
+        <a href="{{route('admin.competition.index')}}" class="btn btn-secondary mt-3">Torna indietro</a>
+
+        <a href="{{route('admin.competition.edit', $competition->id)}}" class="btn btn-primary mt-3">Modifica</a>
+
     </div>
 @endsection
