@@ -33,8 +33,17 @@
     }
 }
 
-.ms_img-card-body{
-    height: 150px;
+.ms_index-img-container{
+    height: 300px;
+    .ms_img{
+        max-height: 300px;
+        width: 100%;
+    }
+}
+
+.ms_show-image{
+    max-height: 600px;
+    max-width: 600px;
 }
 
 // remove arrows from input number

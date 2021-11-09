@@ -25,7 +25,7 @@
                 {{-- end title section --}}
 
                 {{-- Start - visibility switch --}}
-                <div class="col-12 col-lg-6">
+                <div class="col-12">
                     <div class="form-check form-switch">
                         {{-- @dd(old('visibility')) --}}
                         <input name="is_visible" type="checkbox" class="form-check-input" id="flexSwitchCheck" 
@@ -51,7 +51,7 @@
                 <div class="col-12">
                     {{-- Inizio - Campo caricamento foto --}}
                     <div class="mb-3">
-                        <input type="file" required accept="image/*" onchange="displayImg(event)" name="src" id="src" class="form-control-file mb-2
+                        <input type="file" required accept="image/*" onchange="displayImg(event)" name="src" id="src" class="form-control-file img-thumbnail mb-2
                         @error('src') 
                             is-invalid 
                         @enderror" required>

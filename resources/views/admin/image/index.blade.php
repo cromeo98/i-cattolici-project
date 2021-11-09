@@ -17,10 +17,12 @@
 
         @foreach ($data as $item)
 
-        <div class="col-4">
+        <div class="col-6">
 
-            <div class="card" style="width: 18rem;">
-                <img class="ms_img-card-body" src="{{asset('storage/' . $item->src)}}" class="card-img-top" alt="{{$item->alt}}">
+            <div class="card">
+                <div class="ms_index-img-container">
+                    <img class="ms_img" src="{{asset('storage/' . $item->src)}}" class="card-img-top img-thumbnail" alt="{{$item->alt}}">
+                </div>
                 <div class="card-body text-center">
                     @if ($item->is_visible == 0)
                         <span>Non visibile </span><i class="fas fa-eye-slash"></i>
@@ -64,9 +66,6 @@
             </div>
         </div>
         @endforeach
-
-        <div class="col-4"></div>
-        <div class="col-4"></div>
 
     </div>
 
