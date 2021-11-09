@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Image;
 
@@ -59,6 +60,12 @@ class ImageController extends Controller
         $newImage['slug'] = $newSlug;
 
         $newImage['alt'] = $newImage['title'];
+
+        if($newImage['is_visible'] == 'on'){
+            $newImage['is_visible'] = 1;
+        } else{
+            $newImage['is_visible'] = 0;
+        }
 
         $image = new Image();
         $image->fill($newImage);
