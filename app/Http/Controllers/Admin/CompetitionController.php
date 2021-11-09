@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Competition;
 
 class CompetitionController extends Controller
@@ -45,6 +47,17 @@ class CompetitionController extends Controller
         ]);
 
         $newCompetition = $request->all();
+
+        $baseSlug = Str::slug($newCompetition['name'] . '-' . $newCompetition['year'], '-');
+
+        $newSlug = $baseSlug;
+        $counter = 0;
+        while(Competition::where('slug', $newSlug)->first()){
+            $counter++;
+            $newSlug = $baseSlug . '-' . $counter;
+        }
+
+        $newCompetition['slug'] = $newSlug;
 
         $competition = new Competition();
         $competition->fill($newCompetition);

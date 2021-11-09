@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompetitionsTable extends Migration
+class CreateGalleryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCompetitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('competitions', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->year('year');
-            $table->string('link')->nullable();
+            $table->string('title')->nullable();
+            $table->string('src')->required();
+            $table->string('alt')->nullable();
+            $table->text('description')->nullable();
+            $table->tinyInteger('is_visible')->default(0);
             $table->string('slug')->unique()->required();
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreateCompetitionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competitions');
+        Schema::dropIfExists('gallery');
     }
 }

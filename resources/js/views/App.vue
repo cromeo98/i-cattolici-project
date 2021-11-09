@@ -52,10 +52,10 @@
   @import '../../sass/app';
 
   main{
-    height: calc(100vh - 170px);
-    background-image: url('../../img/bg-home.png');
-    background-size: cover;
-    background-position: -7px;
+    // height: calc(100vh - 170px);
+    // background-image: url('../../img/bg-home.png');
+    // background-size: cover;
+    // background-position: -7px;
 
     .ms_main-nav-links{
       background-color: $yellow;
