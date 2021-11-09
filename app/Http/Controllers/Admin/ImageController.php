@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Gallery extends Controller
+use App\Image;
+
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
