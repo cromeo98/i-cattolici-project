@@ -16,7 +16,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $data = Image::all();
+        
+        return view('admin.image.index', compact('data'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.image.create');
     }
 
     /**
@@ -37,7 +39,34 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'src' => 'required',
+            'is_visible' => 'required'
+        ]);
+
+        $newImage = $request->all();
+
+        $baseSlug = Str::slug($newImage['title'], '-');
+
+        $newSlug = $baseSlug;
+        $counter = 0;
+        while(Image::where('slug', $newSlug)->first()){
+            $counter++;
+            $newSlug = $baseSlug . '-' . $counter;
+        }
+
+        $newImage['slug'] = $newSlug;
+
+        $newImage['alt'] = $newImage['title'];
+
+        $image = new Image();
+        $image->fill($newImage);
+
+        $image->save();
+
+        return redirect()->route('admin.image.index');
+
     }
 
     /**
