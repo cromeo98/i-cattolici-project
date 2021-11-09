@@ -31,6 +31,9 @@
                         <input name="is_visible" type="checkbox" class="form-check-input" id="flexSwitchCheck" 
                         @if(old('is_visible') == 'on')
                             checked
+                        @endif
+                        @if('is_visible' == 'off')
+                            value="off"
                         @endif>
                         <label class="form-check-label" for="flexSwitchCheck">Visibilità *</label>
                         <span class="text-muted">(se non selezionato, l'appartamento non sarà visibile. Potrai modificare questo campo in seguito)</span>

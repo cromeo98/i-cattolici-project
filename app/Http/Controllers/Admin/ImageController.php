@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use App\Image;
 
@@ -42,11 +43,12 @@ class ImageController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'src' => 'required',
-            'is_visible' => 'required'
+            'src' => 'required'
         ]);
 
         $newImage = $request->all();
+
+        // dd($newImage);
 
         $baseSlug = Str::slug($newImage['title'], '-');
 
@@ -61,14 +63,25 @@ class ImageController extends Controller
 
         $newImage['alt'] = $newImage['title'];
 
-        if($newImage['is_visible'] == 'on'){
-            $newImage['is_visible'] = 1;
-        } else{
+        if(!isset($newImage['is_visible'])){
             $newImage['is_visible'] = 0;
+        } else{
+            $newImage['is_visible'] = 1;
+        }
+
+        if(array_key_exists('src', $newImage)){
+            // salvo l'immagine e ne recupero il percorso
+            $img_path = Storage::put('covers', $newImage['src']);
+            // salvo il tutto nella tabella apartments
+            $newImage['src'] = $img_path;
         }
 
         $image = new Image();
         $image->fill($newImage);
+
+
+
+        dd($image);
 
         $image->save();
 
