@@ -25,7 +25,9 @@
                 <div class="ms_table-title">Azioni</div>
             </div>
         </div>
+
         @foreach ($data as $item)
+
             <div class="ms_table-row">
                 <div class="col-3">
                     <div class="ms_table-cell">{{$item->name}}</div>
@@ -52,7 +54,7 @@
                         <a href="{{route('admin.competition.edit', $item->id)}}" class="btn btn-warning">Modifica</a>
 
                         {{-- delete --}}
-                        <form action="{{route('admin.competition.destroy', $item->id)}}" method="POST" class="d-inline-block text-center" id="form-destroy-{{$item->name}}">
+                        <form action="{{route('admin.competition.destroy', $item->id)}}" method="POST" class="d-inline-block text-center" id="form-destroy-{{$item->id}}">
                             {{-- Per ogni form bisogna inserire il token altrimenti il cambiamento non viene accettato dal sistema --}}
                             @csrf
                             @method('DELETE')
@@ -77,7 +79,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annulla</button>
-                            <button type="submit" form="form-destroy-{{$item->name}}" class="btn btn-danger">Elimina</button>
+                            <button type="submit" form="form-destroy-{{$item->id}}" class="btn btn-danger">Elimina</button>
                         </div>
                     </div>
                 </div>

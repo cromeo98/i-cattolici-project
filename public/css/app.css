@@ -11327,6 +11327,10 @@ textarea.form-control-lg {
   color: inherit;
 }
 
+.ms_img-card-body {
+  height: 150px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

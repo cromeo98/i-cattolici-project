@@ -69,12 +69,14 @@ class ImageController extends Controller
             $newImage['is_visible'] = 1;
         }
 
+
+
+        $image = new Image();
         // salvo l'immagine e ne recupero il percorso
-        $img_path = Storage::put('covers', $newImage['src']);
+        $img_path = Storage::put('public', $newImage['src']);
         // salvo il tutto nella tabella image
         $newImage['src'] = $img_path;
 
-        $image = new Image();
         $image->fill($newImage);
 
         $image->save();
@@ -89,9 +91,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
-        //
+        return view('admin.image.show', compact('image'));
     }
 
     /**
@@ -123,8 +125,10 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
-        //
+        $image->delete();
+
+        return redirect()->route('admin.image.index');
     }
 }
