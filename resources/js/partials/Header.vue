@@ -1,39 +1,48 @@
 <template>
-
     <header>
-        <div class="container-nav row">
+        <nav>
+            <div class="ms_container-nav">
+                <div class="float-start ms_logo-container">
+                    <img src="/img/logo-cattolici.png" alt="I CATTOLICI">
+                </div>
 
-            <div class="ms_cattolici-logo col-6">
-                I CATTOLICI
+                <div class="float-end">
+                    login
+                </div>
             </div>
-
-            <div class="ms_login col-6">
-                LOGIN
-            </div>
-
-        </div>
+        </nav>
     </header>
-
 </template>
-
 
 <script>
 
-    export default {
-
-        name: 'Header',
-
-    }
+export default {
+    name: 'Header'
+}
 
 </script>
 
+<style scoped lang="scss">
 
-<style lang="scss" scoped>
+    @import '../../sass/app.scss';
 
-    @import '../../sass/_variables.scss';
+    header{
+        height: 70px;
+        line-height: 70px;
+        vertical-align: middle;
+        background-color: $blue;
+        padding: 0 15px;
 
-    @import '../../sass/commons.scss';
-
+            .ms_logo-container{
+                width: 50px;
+                
+                img{
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+            }
+    }
 
 
 </style>
