@@ -31,9 +31,6 @@
                         <input name="is_visible" type="checkbox" class="form-check-input" id="flexSwitchCheck" 
                         @if(old('is_visible') == 'on')
                             checked
-                        @endif
-                        @if('is_visible' == 'off')
-                            value="off"
                         @endif>
                         <label class="form-check-label" for="flexSwitchCheck">Visibilità *</label>
                         <span class="text-muted">(se non selezionato, l'appartamento non sarà visibile. Potrai modificare questo campo in seguito)</span>
@@ -64,7 +61,7 @@
 
                 <div class="col-12">
                     {{-- Visualizza immagine caricata --}}
-                    <img id="output" class="w-50" src="old( 'src', {{asset("img/empty-image-white.jpg")}})" alt="Couldn't load the image">  
+                    <img id="output" class="w-50" src="{{asset("img/empty-image-white.jpg")}}" alt="Couldn't load the image">  
                     @error('src')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

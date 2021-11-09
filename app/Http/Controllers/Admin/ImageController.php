@@ -69,19 +69,13 @@ class ImageController extends Controller
             $newImage['is_visible'] = 1;
         }
 
-        if(array_key_exists('src', $newImage)){
-            // salvo l'immagine e ne recupero il percorso
-            $img_path = Storage::put('covers', $newImage['src']);
-            // salvo il tutto nella tabella apartments
-            $newImage['src'] = $img_path;
-        }
+        // salvo l'immagine e ne recupero il percorso
+        $img_path = Storage::put('covers', $newImage['src']);
+        // salvo il tutto nella tabella image
+        $newImage['src'] = $img_path;
 
         $image = new Image();
         $image->fill($newImage);
-
-
-
-        dd($image);
 
         $image->save();
 
