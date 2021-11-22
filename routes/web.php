@@ -25,6 +25,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('/competition', 'CompetitionController');
     Route::resource('/image', 'ImageController');
+    Route::resource('/partnership', 'PartnershipController');
 });
 
 

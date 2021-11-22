@@ -9,6 +9,8 @@
       <li class="list-group-item">
         <a href="{{route('admin.image.index')}}" class="ms_a-inherit"><i class="far fa-images"></i></i> Immagini</a>
       </li>
-      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">
+        <a href="{{ route('admin.partnership.index')}}" class="ms_a-inherit"><i class="fab fa-battle-net"></i> Sponsor</a>
+      </li>
     </ul>
 </div>
